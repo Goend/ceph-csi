@@ -17,6 +17,8 @@ RUN source /build.env \
     && mkdir -p /usr/local/go \
     && curl https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-${GOARCH}.tar.gz | tar xzf - -C ${GOROOT} --strip-components=1
 
+RUN mkdir /etc/selinux || true && touch /etc/selinux/config
+
 RUN dnf -y install \
 	git \
 	make \
